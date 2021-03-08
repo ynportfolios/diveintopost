@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_team, only: %i[show edit update destroy]
+  before_action :user_check, only: %i[edit]
 
   def index
     @teams = Team.all
@@ -51,6 +52,10 @@ class TeamsController < ApplicationController
 
   def set_team
     @team = Team.friendly.find(params[:id])
+  end
+
+  def user_check
+    redirect_to @team, notice: I18n.t('views.messages.cannot_edit_only_owner') unless @team.owner == current_user
   end
 
   def team_params
