@@ -224,6 +224,8 @@ en:
       cannot_delete_the_leader: 'The leader cannot be deleted'
       does_not_exist_email: 'Email does not exist. Please make an account'
       cannot_delete_only_a_member: 'This user is only a member of this team and cannot be deleted'
+      cannot_delete_only_owner_or_self: 'This user is not owner or self and cannot be deleted'
+      cannot_edit_only_owner: 'This user is not owner and cannot be edited'
       delete_member: 'The member has been deleted'
       cannot_delete_member_4_some_reason: 'The file could not be deleted for some reason.'
       failed_to_post: 'Failed to post ...'

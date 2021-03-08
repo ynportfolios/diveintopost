@@ -27,7 +27,9 @@ class AssignsController < ApplicationController
   end
 
   def assign_destroy(assign, assigned_user)
-    if assigned_user == assign.team.owner
+    if !(assign.team.owner == current_user || assigned_user == current_user)
+      I18n.t('views.messages.cannot_delete_only_owner_or_self')
+    elsif assigned_user == assign.team.owner
       I18n.t('views.messages.cannot_delete_the_leader')
     elsif Assign.where(user_id: assigned_user.id).count == 1
       I18n.t('views.messages.cannot_delete_only_a_member')
